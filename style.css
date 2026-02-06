@@ -1,0 +1,126 @@
+body {
+    background-color: #fdfaf6;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    color: #444;
+    margin: 0;
+    line-height: 1.6;
+}
+
+#main-header {
+    background: linear-gradient(135deg, #4a90e2, #2c3e50);
+    color: white;
+    text-align: center;
+    padding: 60px 20px;
+}
+
+#tribute-container {
+    max-width: 950px; /* Widened slightly to accommodate the mosaic */
+    margin: -40px auto 40px;
+    background: #fff;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+
+h2, h3 {
+    color: #4a90e2;
+    border-bottom: 2px solid #f0f0f0;
+    padding-bottom: 5px;
+}
+
+/* Mosaic Grid Layout for 7 Photos */
+.mosaic-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-auto-rows: 250px; /* Sets a consistent height for rows */
+    gap: 15px;
+    margin: 30px 0;
+}
+
+.mosaic-grid figure {
+    margin: 0;
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px;
+    background: #fff;
+    border: 1px solid #eee;
+    transition: transform 0.3s ease;
+}
+
+.mosaic-grid figure:hover {
+    transform: translateY(-5px); /* Lift effect on hover */
+    z-index: 10;
+}
+
+.mosaic-grid img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensures photos fill the grid square without stretching */
+    display: block;
+}
+
+/* Feature styling for specific photos */
+.item-large {
+    grid-row: span 2; /* Makes the family photo taller */
+}
+
+.item-wide {
+    grid-column: span 2; /* Makes the landscape photo wider */
+}
+
+.mosaic-grid figcaption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.6);
+    color: white;
+    padding: 10px;
+    font-size: 0.8rem;
+    text-align: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.mosaic-grid figure:hover figcaption {
+    opacity: 1; /* Shows caption only when hovering */
+}
+
+blockquote {
+    border-left: 5px solid #4a90e2;
+    margin: 30px 0;
+    padding: 20px;
+    background: #f0f7ff;
+    font-style: italic;
+    border-radius: 0 8px 8px 0;
+}
+
+footer {
+    text-align: center;
+    padding: 40px 20px;
+    font-size: 0.85rem;
+    color: #888;
+    background: #f9f9f9;
+    border-radius: 0 0 12px 12px;
+}
+
+/* Responsive adjustment for small screens */
+@media (max-width: 768px) {
+    .mosaic-grid {
+        grid-template-columns: 1fr; /* Single column on mobile */
+        grid-auto-rows: auto;
+    }
+    
+    .item-large, .item-wide {
+        grid-row: span 1;
+        grid-column: span 1;
+    }
+
+    .mosaic-grid img {
+        height: 300px;
+    }
+
+    .mosaic-grid figcaption {
+        opacity: 1; /* Always show captions on mobile */
+    }
+}
